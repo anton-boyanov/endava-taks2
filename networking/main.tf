@@ -155,9 +155,9 @@ resource "aws_security_group" "endava_alb_sg" {
     }
 
     ingress {
-        from_port = 0
-        to_port = 0
-        protocol = "-1"
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 
@@ -167,16 +167,6 @@ resource "aws_security_group" "endava_alb_sg" {
         protocol = "-1"
         cidr_blocks = ["0.0.0.0/0"]
     }
-}
-
-resource "aws_security_group_rule" "allow_3306_from_alb" {
-    type = "ingress"
-    from_port = 3306
-    to_port = 3306
-    protocol = "tcp"
-
-    security_group_id = "${aws_security_group.endava_private_sg.id}"
-    source_security_group_id = "${aws_security_group.endava_alb_sg.id}"
 }
 
 resource "aws_security_group_rule" "allow_3306_from_webapp" {
@@ -197,16 +187,6 @@ resource "aws_security_group_rule" "allow_ssh_from_webapp" {
 
     security_group_id = "${aws_security_group.endava_private_sg.id}"
     source_security_group_id = "${aws_security_group.endava_public_sg.id}"
-}
-
-resource "aws_security_group_rule" "allow_health_check" {
-    type = "ingress"
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
-
-    security_group_id = "${aws_security_group.endava_private_sg.id}"
-    source_security_group_id = "${aws_security_group.endava_alb_sg.id}"
 }
 
 resource "aws_vpc_dhcp_options" "dns_resolver" {
