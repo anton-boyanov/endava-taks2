@@ -5,7 +5,7 @@ private_cidrs = ["10.0.3.0/24", "10.0.4.0/24"]
 accessip = "0.0.0.0/0"
 
 key_name = "endavakey"
-public_key_path = "/home/ec2-user/.ssh/id_rsa.pub"
+public_key_path = "$HOME/.ssh/id_rsa.pub"
 instance_type = "t2.micro"
 desired_capacity_on_demand = 2
 instance_count = 2
@@ -19,5 +19,5 @@ db_engine = "mysql"
 db_engine_version = "5.7"
 db_instance_type = "db.t2.micro"
 db_name = "endava"
-db_root_password = "qwerty1234"
+#db_root_password = ""
 db_backup_period = 5
