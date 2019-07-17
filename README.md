@@ -56,6 +56,12 @@ and <strong>generate public/private rsa key pair</strong> in your working statio
 <li>Auto Scaling Group</li>
 </ul>
 <h4 id="for--iam">For  IAM</h4>
+<ul>
+<li>2 x roles and 2 x policy<br>
+<img src="https://lh3.googleusercontent.com/89xQi1jbICSFzYs1QLQYzRSN49X-mI5wBiX7qE2-OIzVtRt_L_DrPq5afgZUAH6rZrpzJ5mzCNae" alt="enter image description here"><img src="https://lh3.googleusercontent.com/bWLSYsISoUD4Uwtg8eQTgNcOkVcVPJNt3uypLYQ1edni2svP2zpq41AiNM7VO-O4R_vJTFC92uj6" alt="enter image description here"></li>
+</ul>
+<h4 id="for--monitoring-i-use-cloud-watch-servise">For  Monitoring I use Cloud Watch Servise</h4>
+<p><img src="https://lh3.googleusercontent.com/LzkI9dhf4xQ3T_9qwg4UOajOxurgZojYTHJpFvfQ1bt_XEaSAHIUl8zCSlFJOPPa2-_0L9yF7FAn" alt="enter image description here"><img src="https://lh3.googleusercontent.com/kma0XMP2qYV8KtiommwNGmD4aU6ntbQOn_bccYvOFZDKFD6jIbp9rfOs7fZ6ZC1VkUpwNBxhIQhO" alt="enter image description here"></p>
 <h2 id="what-we-expect-to-see-as-a-result">What we expect to see as a result</h2>
 <p>When you hit load balancer link, you can see PhpMyAdmin login screen</p>
 <p><img src="https://lh3.googleusercontent.com/tY__Tk8OnYhIwe9vs-wiwceaBROl1jLYhITY5KEJyvvD5aEQlN8YMXbg_DOGv9p96voTZGzr2PDT" alt="enter image description here"></p>
