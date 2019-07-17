@@ -32,6 +32,30 @@ and <strong>generate public/private rsa key pair</strong> in your working statio
 <li><code>iam</code>:  IAM</li>
 </ul>
 <p><img src="https://lh3.googleusercontent.com/P9MxtLh06u_hkuqT8-LdzUNtv7nifYFa83U9nD1HRDvFU8gR6y3pejMYDDGlZEUZQxEqX7AihSW8" alt="enter image description here"></p>
+<h2 id="implementation">Implementation</h2>
+<h4 id="for-networking">For networking</h4>
+<ul>
+<li>VPC</li>
+<li>IGW</li>
+<li>Private RT (no internet connected)</li>
+<li>Public RT (conncted to IGW)</li>
+<li>2 x Private Subnets (in different az) for RDS</li>
+<li>2 x Public Subnets (in different az) for webservers</li>
+<li>3 x Security groups for ALB, webservers, RDS</li>
+<li>DHCP Option set</li>
+</ul>
+<h4 id="for--rds">For  RDS</h4>
+<ul>
+<li>Amazon RDS service</li>
+</ul>
+<h4 id="for-webserver">For Webserver</h4>
+<ul>
+<li>ECS runnig one service - 2 x tasks run containers on 2 x EC2 into my Public Subnets</li>
+<li>For container image I use phpmyadmin/phpmyadmin <a href="https://hub.docker.com/r/phpmyadmin/phpmyadmin">https://hub.docker.com/r/phpmyadmin/phpmyadmin</a></li>
+<li>ALB</li>
+<li>Auto Scaling Group</li>
+</ul>
+<h4 id="for--iam">For  IAM</h4>
 <h2 id="what-we-expect-to-see-as-a-result">What we expect to see as a result</h2>
 <p>When you hit load balancer link, you can see PhpMyAdmin login screen</p>
 <p><img src="https://lh3.googleusercontent.com/tY__Tk8OnYhIwe9vs-wiwceaBROl1jLYhITY5KEJyvvD5aEQlN8YMXbg_DOGv9p96voTZGzr2PDT" alt="enter image description here"></p>
