@@ -33,7 +33,7 @@ and <strong>generate public/private rsa key pair</strong> in your working statio
 </ul>
 <p><img src="https://lh3.googleusercontent.com/P9MxtLh06u_hkuqT8-LdzUNtv7nifYFa83U9nD1HRDvFU8gR6y3pejMYDDGlZEUZQxEqX7AihSW8" alt="enter image description here"></p>
 <h2 id="what-we-expect-to-see-as-a-result">What we expect to see as a result</h2>
-<p>When you hit load balancer link you can see PhpMyAdmin ligin screen</p>
+<p>When you hit load balancer link, you can see PhpMyAdmin login screen</p>
 <p><img src="https://lh3.googleusercontent.com/tY__Tk8OnYhIwe9vs-wiwceaBROl1jLYhITY5KEJyvvD5aEQlN8YMXbg_DOGv9p96voTZGzr2PDT" alt="enter image description here"></p>
 <p>Now you can log into MySQL database server</p>
 <p><img src="https://lh3.googleusercontent.com/Ee9JS6F5taYvO2LjC9iD9LKjncUHgpTUMOkcowBAolSLGIg0fv2DZuc3bKqMeUvA0bmKActtMJMR" alt="enter image description here"></p>
