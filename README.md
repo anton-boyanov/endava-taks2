@@ -22,7 +22,7 @@
 <p>Go to <a href="https://www.terraform.io/downloads.html">https://www.terraform.io/downloads.html</a> and download the latest version of Terraform. Also, you need to set <strong>AWS_ACCESS_KEY_ID</strong>, <strong>AWS_SECRET_ACCESS_KEY</strong> environment variables<br>
 and <strong>generate public/private rsa key pair</strong> in your working station.</p>
 <p>Precaution note, don’t let these values out from your local machine!</p>
-<h1 id="slution">Slution</h1>
+<h1 id="solution">Solution</h1>
 <p>In this repository you can see a terraform solution of provisioning an Application stack running Apache Mysql PHP on AWS.</p>
 <h3 id="directory-structure">Directory structure</h3>
 <p>In my project, I divide Terraform configuration files into three main categories:</p>
