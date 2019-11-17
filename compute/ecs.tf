@@ -39,7 +39,7 @@ resource "aws_ecs_task_definition" "webapp_definition" {
 data "template_file" "task_webapp" {
     template= "${file("${path.module}/ecs_task_webapp.tpl")}"
 
-    vars {
+    vars = {
         webapp_docker_image = "${var.webapp_docker_image_name}:${var.webapp_docker_image_tag}"
         endpoint = "${aws_db_instance.endava_mysql.endpoint}"
         aws_region = "${var.aws_region}"
