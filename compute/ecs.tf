@@ -36,8 +36,8 @@ resource "aws_ecs_service" "httpd_service" {
     }
 }
 
-data "template_file" "task_def" {
-    template= "${file("${path.module}/ecs_task_def.tpl")}"
+data "template_file" "httpd" {
+    template= "${file("${path.module}/httpd.tpl")}"
 
     vars {
         httpd_docker_image = "${var.httpd_docker_image_name}:${var.httpd_docker_image_tag}"
