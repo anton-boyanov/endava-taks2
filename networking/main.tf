@@ -9,7 +9,7 @@ resource "aws_vpc" "endava_vpc" {
     enable_dns_hostnames = true
     enable_dns_support = true
 
-    tags {
+    tags = {
         Name = "endava_vpc"
     }
 }
@@ -19,7 +19,7 @@ resource "aws_vpc" "endava_vpc" {
 resource "aws_internet_gateway" "endava_igw" {
     vpc_id = "${aws_vpc.endava_vpc.id}"
 
-    tags {
+    tags = {
         Name = "endava_igw"
     }
 }
@@ -34,14 +34,14 @@ resource "aws_route_table" "endava_public_rt" {
         gateway_id = "${aws_internet_gateway.endava_igw.id}"
     }
 
-    tags {
+    tags = {
         Name = "endava_public_rt"
     }
 }
 
 resource "aws_route_table" "endava_private_rt" {
     vpc_id = "${aws_vpc.endava_vpc.id}"
-    tags {
+    tags = {
         Name = "endava_private_rt"
     }
 }
@@ -55,7 +55,7 @@ resource "aws_subnet" "endava_public_subnet" {
     map_public_ip_on_launch = true
     availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
   
-    tags {
+    tags = {
         Name = "endava_public${count.index + 1}"
     }
 }
@@ -67,7 +67,7 @@ resource "aws_subnet" "endava_private_subnet" {
     map_public_ip_on_launch = false
     availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
 
-    tags {
+    tags = {
         Name = "endava_private${count.index + 3}"
     }
 }
@@ -94,7 +94,7 @@ resource "aws_security_group" "endava_public_sg" {
     description = "Used for access to public instances"
     vpc_id = "${aws_vpc.endava_vpc.id}"
   
-    tags {
+    tags = {
         Name = "endava_public_sg"
     }
 
@@ -131,7 +131,7 @@ resource "aws_security_group" "endava_private_sg" {
     description = "Used to put MySql instances"
     vpc_id = "${aws_vpc.endava_vpc.id}"
   
-    tags {
+    tags = {
         Name = "endava_private_sg"
     }
 
@@ -150,7 +150,7 @@ resource "aws_security_group" "endava_alb_sg" {
     description = "Used for ALB"
     vpc_id = "${aws_vpc.endava_vpc.id}"
   
-    tags {
+    tags = {
         Name = "endava_alb_sg"
     }
 
@@ -192,7 +192,7 @@ resource "aws_security_group_rule" "allow_ssh_from_webapp" {
 resource "aws_vpc_dhcp_options" "dns_resolver" {
     domain_name_servers = ["AmazonProvidedDNS"]
 
-    tags {
+    tags = {
         Name = "endava-webapp"
     }
 }
