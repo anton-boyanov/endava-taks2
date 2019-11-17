@@ -5,7 +5,7 @@ resource "aws_cloudwatch_log_group" "endava_log_group" {
     name              = "/ecs/endava-app"
     retention_in_days = 30
 
-    tags {
+    tags = {
         Name = "endava-log-group"
     }
 }
