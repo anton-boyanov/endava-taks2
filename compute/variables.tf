@@ -1,7 +1,7 @@
 #---compute/variables.tf
 
 variable "key_name" {
-    default = "endavakey"
+    default = "apmkey"
 }
 
 variable "aws_region" {
@@ -19,11 +19,11 @@ variable "instance_type" {
     default = "t2.micro"
 }
 variable "ecs_instance_profile" {}
-variable "endava_public_sg" {}
+variable "apm_public_sg" {}
 variable "desired_capacity_on_demand" {
     default = 2
 }
-variable "endava_public_subnets" {
+variable "apm_public_subnets" {
     type = "list"
 }
 variable "instance_count" {
@@ -33,17 +33,17 @@ variable "minimum_healthy_percent_webapp" {
     default = 50
 }
 variable "ecs_service_role" {
-    default = "endava_ecs_service_role"
+    default = "apm_ecs_service_role"
 }
-variable "endava_private_sg" {}
-variable "endava_alb_sg" {}
-variable "endava_private_subnets" {
+variable "apm_private_sg" {}
+variable "apm_alb_sg" {}
+variable "apm_private_subnets" {
     type = "list"
 }
-variable "webapp_docker_image_name" {
-    default = "phpmyadmin/phpmyadmin"
+variable "httpd_docker_image_name" {
+    default = "httpd"
 }
-variable "webapp_docker_image_tag" {
+variable "httpd_docker_image_tag" {
     default = "latest"
 }
 variable "vpc_id" {}
