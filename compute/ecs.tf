@@ -2,23 +2,32 @@
 
 #--- Cluster definition, which is used in autoscaling.tf 
 
-resource "aws_ecs_cluster" "cluster" {
-    name = "endava_cluster"
+resource "aws_ecs_cluster" "apm-dev-cluster" {
+    name = "apm-dev"
 }
 
 #--- ECS service definitions
 
-resource "aws_ecs_service" "webapp_service" {
-    name = "endava_webapp_service"
-    cluster = "${aws_ecs_cluster.cluster.id}"
-    task_definition = "${aws_ecs_task_definition.webapp_definition.arn}"
+resource "aws_ecs_task_definition" "httpd" {
+    family = "services"
+    container_definitions = "${data.template_file.task_def.rendered}"
+
+    lifecycle {
+        create_before_destroy = true
+    }
+}
+
+resource "aws_ecs_service" "httpd_service" {
+    name = "httpd_service"
+    cluster = "${aws_ecs_cluster.apm-dev-cluster.id}"
+    task_definition = "${aws_ecs_task_definition.httpd.arn}"
     desired_count = "${var.instance_count}"
     deployment_minimum_healthy_percent = "${var.minimum_healthy_percent_webapp}"
     iam_role = "${var.ecs_service_role}"
 
     load_balancer {
         target_group_arn = "${aws_alb_target_group.webapp_tg.arn}"
-        container_name = "webapp"
+        container_name = "httpd"
         container_port = 80
     }
 
@@ -27,28 +36,19 @@ resource "aws_ecs_service" "webapp_service" {
     }
 }
 
-resource "aws_ecs_task_definition" "webapp_definition" {
-    family = "endava_webapp"
-    container_definitions = "${data.template_file.task_webapp.rendered}"
-
-    lifecycle {
-        create_before_destroy = true
-    }
-}
-
-data "template_file" "task_webapp" {
-    template= "${file("${path.module}/ecs_task_webapp.tpl")}"
+data "template_file" "task_def" {
+    template= "${file("${path.module}/ecs_task_def.tpl")}"
 
     vars {
-        webapp_docker_image = "${var.webapp_docker_image_name}:${var.webapp_docker_image_tag}"
-        endpoint = "${aws_db_instance.endava_mysql.endpoint}"
+        httpd_docker_image = "${var.httpd_docker_image_name}:${var.httpd_docker_image_tag}"
+        endpoint = "${aws_db_instance.apm_mysql.endpoint}"
         aws_region = "${var.aws_region}"
     }
 }
 
 resource "aws_db_subnet_group" "rds" {
     name       = "rds"
-    subnet_ids = ["${var.endava_private_subnets[0]}", "${var.endava_private_subnets[1]}"]
+    subnet_ids = ["${var.apm_private_subnets[0]}", "${var.apm_private_subnets[1]}"]
 
     tags = {
         Name = "My DB subnet group"
