@@ -1,6 +1,6 @@
 [{
-  "name": "webapp",
-  "image": "${webapp_docker_image}",
+  "name": "httpd",
+  "image": "${httpd_docker_image}",
   "cpu": 256,
   "memory": 256,
   "essential": true,
@@ -11,9 +11,9 @@
   "logConfiguration": {
     "logDriver": "awslogs",
     "options": {
-      "awslogs-group": "endava_log_group",
+      "awslogs-group": "httpd_log_group",
       "awslogs-region": "${aws_region}",
-      "awslogs-stream-prefix": "endava_log_stream"
+      "awslogs-stream-prefix": "httpd_log_stream"
     }
   },
   "command": [],
