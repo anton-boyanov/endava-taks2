@@ -15,7 +15,7 @@ data "aws_ami" "server_ami" {
     }
 }
 
-resource "aws_key_pair" "endava_auth" {
+resource "aws_key_pair" "apm_auth" {
     key_name = "${var.key_name}"
     public_key = "${file(var.public_key_path)}"
 }
