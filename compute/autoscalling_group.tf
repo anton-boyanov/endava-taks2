@@ -38,7 +38,7 @@ resource "aws_autoscaling_group" "webapp_on_demand" {
 
 data "template_file" "autoscaling_user_data" {
     template= "${file("${path.module}/autoscaling_user_data.tpl")}"
-    vars {
+    vars = {
         ecs_cluster = "${aws_ecs_cluster.cluster.name}"
     }
 }
