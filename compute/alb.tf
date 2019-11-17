@@ -2,12 +2,12 @@
 
 resource "aws_alb" "main" {
     lifecycle { create_before_destroy = true }
-    name = "endava-alb"
-    subnets = ["${var.endava_public_subnets}"]
-    security_groups = ["${var.endava_public_sg}"]
+    name = "apm-alb"
+    subnets = ["${var.apm_public_subnets}"]
+    security_groups = ["${var.apm_public_sg}"]
     idle_timeout = 400
     tags {
-        Name = "endava_alb"
+        Name = "apm_alb"
     }
 }
 
