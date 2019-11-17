@@ -1,6 +1,6 @@
 #---Database instances
 
-resource "aws_db_instance" "endava_mysql" {
+resource "aws_db_instance" "apm_mysql" {
 
     allocated_storage = "${var.db_storage_space}"
     storage_type = "gp2"
@@ -13,6 +13,6 @@ resource "aws_db_instance" "endava_mysql" {
     allow_major_version_upgrade = false
     backup_retention_period = "${var.db_backup_period}"
     db_subnet_group_name = "${aws_db_subnet_group.rds.name}"
-    vpc_security_group_ids = ["${var.endava_private_sg}"]
+    vpc_security_group_ids = ["${var.apm_private_sg}"]
     skip_final_snapshot = true
 }
